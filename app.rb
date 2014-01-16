@@ -96,7 +96,7 @@ get '/:address/counter.json' do |address|
 end
 
 get '/up' do
-  last_updated_at = Time.at(db.get('last_updated'))
+  last_updated_at = Time.at(db.get('last_updated').to_i)
   gap = Time.now - last_updated
   
   status (gap > 30) ? 404 : 200
@@ -134,7 +134,7 @@ class Device
   end
 
   def last_updated
-    Time.at(db.get('last_updated')).to_s
+    Time.at(db.get('last_updated').to_i).to_s
   end
   
   def info
