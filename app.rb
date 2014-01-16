@@ -99,7 +99,7 @@ get '/up' do
   last_updated_at = Time.at(db.get('last_updated').to_i)
   gap = Time.now - last_updated_at
   
-  status (gap > 30) ? 404 : 200
+  status (gap > 60) ? 404 : 200
   body "gap is #{gap}s"
 end
 
