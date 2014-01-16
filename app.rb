@@ -69,7 +69,7 @@ post '/device-event/counter-changed' do
   title, value = JSON.parse(payload)
 
   db.hset('counters', address, value)
-  db.set('last_updated', Time.now)
+  db.set('last_updated', Time.now.to_i)
   204
 end
 
